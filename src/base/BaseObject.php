@@ -1,6 +1,8 @@
 <?php
 namespace concepture\php\core\base;
 
+use Exception;
+use ReflectionClass;
 use ReflectionException;
 
 /**
@@ -30,10 +32,10 @@ abstract class BaseObject
         if (method_exists($this, $getter)) {
             return $this->$getter();
         } elseif (method_exists($this, 'set' . $name)) {
-            throw new \Exception('Getting write-only property: ' . get_class($this) . '::' . $name);
+            throw new Exception('Getting write-only property: ' . get_class($this) . '::' . $name);
         }
 
-        throw new \Exception('Getting unknown property: ' . get_class($this) . '::' . $name);
+        throw new Exception('Getting unknown property: ' . get_class($this) . '::' . $name);
     }
 
     public function __set($name, $value)
@@ -42,9 +44,9 @@ abstract class BaseObject
         if (method_exists($this, $setter)) {
             $this->$setter($value);
         } elseif (method_exists($this, 'get' . $name)) {
-            throw new \Exception('Setting read-only property: ' . get_class($this) . '::' . $name);
+            throw new Exception('Setting read-only property: ' . get_class($this) . '::' . $name);
         } else {
-            throw new \Exception('Setting unknown property: ' . get_class($this) . '::' . $name);
+            throw new Exception('Setting unknown property: ' . get_class($this) . '::' . $name);
         }
     }
 
@@ -64,13 +66,13 @@ abstract class BaseObject
         if (method_exists($this, $setter)) {
             $this->$setter(null);
         } elseif (method_exists($this, 'get' . $name)) {
-            throw new \Exception('Unsetting read-only property: ' . get_class($this) . '::' . $name);
+            throw new Exception('Unsetting read-only property: ' . get_class($this) . '::' . $name);
         }
     }
 
     public function __call($name, $params)
     {
-        throw new \Exception('Calling unknown method: ' . get_class($this) . "::$name()");
+        throw new Exception('Calling unknown method: ' . get_class($this) . "::$name()");
     }
 
     public function hasProperty($name, $checkVars = true)
@@ -101,6 +103,6 @@ abstract class BaseObject
      */
     public function getShortName()
     {
-        return (new \ReflectionClass($this))->getShortName();
+        return (new ReflectionClass($this))->getShortName();
     }
 }

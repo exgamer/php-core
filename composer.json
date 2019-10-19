@@ -1,5 +1,5 @@
 {
-    "name": "concepture/php/core",
+    "name": "concepture/php-core",
     "license": "BSD-3-Clause",
     "description": "package under development",
     "authors": [
@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=7.0.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,5 +1,5 @@
 <?php
-namespace concepture\php\core\helpers;
+namespace concepture\php\core\helper;
 
 /**
  * Class ArrayHelper
