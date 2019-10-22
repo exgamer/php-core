@@ -30,7 +30,7 @@ trait ObjectSupportTrait
         $e = new Exception();
         $trace = $e->getTrace();
 
-        return $trace[1] ?? [];
+        return $trace[2] ?? [];
     }
 
     /**
