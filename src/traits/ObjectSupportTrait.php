@@ -22,6 +22,7 @@ trait ObjectSupportTrait
     }
 
     /**
+     * @deprecated
      * Возвращает данные по вызванной функции
      * @return array
      */
@@ -34,6 +35,7 @@ trait ObjectSupportTrait
     }
 
     /**
+     * @deprecated
      * Возвращает название вызванного метода
      *
      * @return string
