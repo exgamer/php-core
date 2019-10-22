@@ -4,6 +4,7 @@ namespace concepture\php\core\base;
 use Exception;
 use ReflectionClass;
 use ReflectionException;
+use concepture\php\core\traits\ObjectSupportTrait;
 
 /**
  * Base object
@@ -12,6 +13,8 @@ use ReflectionException;
  */
 abstract class BaseObject
 {
+    use ObjectSupportTrait;
+
     public function __construct($config = [])
     {
         if (!empty($config)) {
@@ -93,16 +96,5 @@ abstract class BaseObject
     public function hasMethod($name)
     {
         return method_exists($this, $name);
-    }
-
-    /**
-     * returns class name without namespace
-     *
-     * @return string
-     * @throws ReflectionException
-     */
-    public function getShortName()
-    {
-        return (new ReflectionClass($this))->getShortName();
     }
 }
