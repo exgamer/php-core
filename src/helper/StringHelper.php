@@ -24,7 +24,7 @@ class StringHelper
 
     public static function underscoreToCamelCase($string, $capitalizeFirstCharacter = false)
     {
-
+        $str = strtolower($str);
         $str = str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
 
         if (!$capitalizeFirstCharacter) {
